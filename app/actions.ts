@@ -1,6 +1,7 @@
+// app/actions.ts
 import clientPromise from "@/lib/mongodb";
 
-export async function testDB() {
+export async function testDatabaseConnection() {  // Renommé 
   let isConnected = false;
   try {
     const mongoClient = await clientPromise;
