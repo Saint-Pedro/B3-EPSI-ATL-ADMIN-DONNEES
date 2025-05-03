@@ -1,83 +1,68 @@
-## Example app using MongoDB
+# Atelier Admin Données - B3 EPSI
 
-[MongoDB](https://www.mongodb.com/) is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. This example will show you how to connect to and use MongoDB as your backend for your Next.js app.
+## Liens
 
-If you want to learn more about MongoDB, visit the following pages:
+- **GitHub**: [https://github.com/Saint-Pedro/B3-EPSI-ATL-ADMIN-DONNEES](https://github.com/Saint-Pedro/B3-EPSI-ATL-ADMIN-DONNEES)
+- **Documentation Swagger**: [https://b3-epsi-atl-admin-donnees.vercel.app/api-doc](https://b3-epsi-atl-admin-donnees.vercel.app/api-doc)
 
-- [MongoDB Atlas](https://mongodb.com/atlas)
-- [MongoDB Documentation](https://docs.mongodb.com/)
+## Description du projet
 
-## Deploy your own
+Ce projet implémente une API RESTful pour la gestion d'une base de données de films, commentaires et cinémas en utilisant:
+- **Next.js** comme framework fullstack
+- **MongoDB** comme base de données
+- **Swagger** pour la documentation automatisée
 
-Once you have access to the environment variables you'll need, deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-mongodb)
+## Endpoints
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?project-name=with-mongodb&repository-name=with-mongodb&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-mongodb&integration-ids=oac_jnzmjqM10gllKmSrG0SGrHOH)
+### Movies
+- `GET /api/movies` - Récupérer tous les films avec pagination
+- `GET /api/movies/{idMovie}` - Récupérer un film par ID
+- `POST /api/movies` - Créer un nouveau film
+- `PUT /api/movies/{idMovie}` - Mettre à jour un film
+- `DELETE /api/movies/{idMovie}` - Supprimer un film
 
-## How to use
+### Comments
+- `GET /api/comments` - Récupérer tous les commentaires avec pagination
+- `GET /api/comments/{idComment}` - Récupérer un commentaire par ID
+- `POST /api/comments` - Créer un nouveau commentaire
+- `PUT /api/comments/{idComment}` - Mettre à jour un commentaire
+- `DELETE /api/comments/{idComment}` - Supprimer un commentaire
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+### Theaters
+- `GET /api/theaters` - Récupérer tous les cinémas avec pagination
+- `GET /api/theaters/{idTheater}` - Récupérer un cinéma par ID
+- `POST /api/theaters` - Créer un nouveau cinéma
+- `PUT /api/theaters/{idTheater}` - Mettre à jour un cinéma
+- `DELETE /api/theaters/{idTheater}` - Supprimer un cinéma
 
-```bash
-npx create-next-app --example with-mongodb with-mongodb-app
+### Comments par Film
+- `GET /api/movies/{idMovie}/comments` - Récupérer les commentaires d'un film
+- `POST /api/movies/{idMovie}/comments` - Ajouter un commentaire à un film
+
+
+## Configuration locale
+
+Pour configurer et exécuter le projet en local :
+
+1. Clonez le dépôt:
+```
+git clone https://github.com/Saint-Pedro/B3-EPSI-ATL-ADMIN-DONNEES.git
+cd B3-EPSI-ATL-ADMIN-DONNEES
 ```
 
-```bash
-yarn create next-app --example with-mongodb with-mongodb-app
+2. Installez les dépendances:
 ```
-
-```bash
-pnpm create next-app --example with-mongodb with-mongodb-app
-```
-
-## Configuration
-
-### Set up a MongoDB database
-
-Set up a MongoDB database either locally or with [MongoDB Atlas for free](https://mongodb.com/atlas).
-
-### Set up environment variables
-
-Copy the `env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
-
-```bash
-cp .env.local.example .env.local
-```
-
-Set each variable on `.env.local`:
-
-- `MONGODB_URI` - Your MongoDB connection string. If you are using [MongoDB Atlas](https://mongodb.com/atlas) you can find this by clicking the "Connect" button for your cluster.
-
-### Run Next.js in development mode
-
-```bash
 npm install
-npm run dev
-# or
-yarn install
-yarn dev
-# or
-pnpm install
-pnpm dev
 ```
 
-Your app should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
+3. Créez un fichier `.env.local` avec la connexion MongoDB:
+```
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/sample_mflix
+```
 
-You will either see a message stating "You are connected to MongoDB" or "You are NOT connected to MongoDB". Ensure that you have provided the correct `MONGODB_URI` environment variable.
+4. Lancez le serveur de développement:
+```
+npm run dev
+```
 
-When you are successfully connected, you can refer to the [MongoDB Node.js Driver docs](https://mongodb.github.io/node-mongodb-native/3.4/tutorials/collections/) for further instructions on how to query your database.
-
-## Deploy on Vercel
-
-You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-#### Deploy Your Local Project
-
-To deploy your local project to Vercel, push it to GitHub/GitLab/Bitbucket and [import to Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example).
-
-**Important**: When you import your project on Vercel, make sure to click on **Environment Variables** and set them to match your `.env.local` file.
-
-#### Deploy from Our Template
-
-Alternatively, you can deploy using our template by clicking on the Deploy button below.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?project-name=with-mongodb&repository-name=with-mongodb&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-mongodb&integration-ids=oac_jnzmjqM10gllKmSrG0SGrHOH)
+5. Accédez à la documentation Swagger à l'adresse http://localhost:3000/api-doc
